@@ -20,14 +20,25 @@ public class Knapsack
                 bufferPool[w[i]]=v[i];
             }
         }
-        int maxValue=0;
+        int maxValueIndex=0;
         for(int i = 0;i<=bagCapacity;i++){
-            if(maxValue<=bufferPool[i])
+            if(bufferPool[maxValueIndex]<=bufferPool[i])
             {
-                maxValue=bufferPool[i];
+               maxValueIndex=i;
             }
         }
-        System.out.println(maxValue);
+        System.out.println(bufferPool[maxValueIndex]);
+        for(int i=w.length-1;i>=0;i--)
+        {
+            if(w[i]<=maxValueIndex&&maxValueIndex>0){
+                if(bufferPool[maxValueIndex-w[i]]==bufferPool[maxValueIndex]-v[i])
+                {
+                    System.out.println(i+"selected!");
+                    maxValueIndex-=w[i];
+                }
+            }
+
+        }
     }
 
     public static int findMax(int[] bufferPool,int index)

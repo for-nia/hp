@@ -12,7 +12,7 @@ public class HttpServer implements Runnable
 
     private byte[] headers;
     private byte[] content;
-    private int port=80;
+    private int port=8888;
     public HttpServer(byte[] data,String MIMEType,int port)
     {
         this.content=data;
